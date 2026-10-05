@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "request_id": "demo-request-1",
+  "context_id": "demo-scene-1",
+  "environment_version": "two-ball-demo-v1",
+  "actions": [
+    {"type": "pick", "target_id": "red_ball", "grip_force_n": 3.0, "duration_s": 1.0},
+    {"type": "move", "destination_id": "zone_1", "route_id": "to_zone_1", "speed_m_s": 0.1, "duration_s": 2.0},
+    {"type": "place", "target_id": "red_ball", "destination_id": "zone_1", "duration_s": 1.0},
+    {"type": "finish"}
+  ]
+}

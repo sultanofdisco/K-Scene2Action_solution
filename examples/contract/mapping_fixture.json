@@ -1,0 +1,30 @@
+{
+  "schema_version": "f2-mapping-v1",
+  "goals": [
+    {
+      "object": "red_ball",
+      "destination": "zone1",
+      "outcome": "supported_placement",
+      "count": null
+    },
+    {
+      "object": "blue_ball",
+      "destination": "zone2",
+      "outcome": "supported_placement",
+      "count": null
+    }
+  ],
+  "allowed_actions": [
+    "approach",
+    "descend",
+    "grasp",
+    "lift",
+    "transfer",
+    "place",
+    "release",
+    "retreat",
+    "verify",
+    "stop"
+  ],
+  "unresolved": []
+}

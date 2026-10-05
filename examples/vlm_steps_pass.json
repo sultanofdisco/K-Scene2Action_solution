@@ -1,0 +1,14 @@
+{
+  "decision": "EXECUTE",
+  "steps": [
+    {"action": "approach", "object": "red_ball", "destination": "none"},
+    {"action": "descend", "object": "red_ball", "destination": "none"},
+    {"action": "grasp", "object": "red_ball", "destination": "none"},
+    {"action": "lift", "object": "red_ball", "destination": "none"},
+    {"action": "transfer", "object": "red_ball", "destination": "zone1"},
+    {"action": "place", "object": "red_ball", "destination": "zone1"},
+    {"action": "release", "object": "red_ball", "destination": "zone1"},
+    {"action": "retreat", "object": "red_ball", "destination": "none"}
+  ],
+  "reason": "Synthetic normal-plan fixture using the recorded primitive contract."
+}

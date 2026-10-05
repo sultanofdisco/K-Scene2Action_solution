@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "request_id": "demo-request-1",
+  "context_id": "demo-scene-1",
+  "environment_version": "two-ball-demo-v1",
+  "context_status": "READY",
+  "task": {
+    "placements": [
+      {
+        "target_id": "red_ball",
+        "goal_region_id": "zone_1",
+        "placement_count": 1
+      },
+      {
+        "target_id": "blue_ball",
+        "goal_region_id": "zone_2",
+        "placement_count": 1
+      }
+    ]
+  },
+  "objects": {
+    "red_ball": {
+      "authorized": true,
+      "observed": true,
+      "graspable": true,
+      "max_grip_force_n": 4.0,
+      "approach_route_id": "approach_red"
+    },
+    "blue_ball": {
+      "authorized": true,
+      "observed": true,
+      "graspable": true,
+      "max_grip_force_n": 4.0,
+      "approach_route_id": "approach_blue"
+    }
+  },
+  "regions": {
+    "zone_1": {
+      "placement_allowed": true,
+      "support_verified": true,
+      "stable_verified": true
+    },
+    "zone_2": {
+      "placement_allowed": true,
+      "support_verified": true,
+      "stable_verified": true
+    }
+  },
+  "routes": {
+    "approach_red": {
+      "source_id": "home",
+      "destination_id": "red_ball",
+      "assessment": "CLEAR",
+      "hazards": []
+    },
+    "approach_blue": {
+      "source_id": "zone_1",
+      "destination_id": "blue_ball",
+      "assessment": "CLEAR",
+      "hazards": []
+    },
+    "to_zone_1": {
+      "source_id": "red_ball",
+      "destination_id": "zone_1",
+      "assessment": "CLEAR",
+      "hazards": []
+    },
+    "to_zone_2": {
+      "source_id": "red_ball",
+      "destination_id": "zone_2",
+      "assessment": "CLEAR",
+      "hazards": []
+    },
+    "blue_to_zone_2": {
+      "source_id": "blue_ball",
+      "destination_id": "zone_2",
+      "assessment": "CLEAR",
+      "hazards": []
+    }
+  },
+  "limits": {
+    "max_actions": 24,
+    "max_duration_s": 30.0,
+    "max_speed_m_s": 0.1,
+    "max_grip_force_n": 8.0,
+    "max_hold_time_s": 10.0
+  },
+  "execution": {
+    "state": "ready",
+    "robot_error": false,
+    "safety_enabled": true,
+    "holding": null,
+    "location_id": "home"
+  },
+  "native_profile": {
+    "grip_force_n": 3.0,
+    "speed_m_s": 0.1,
+    "pick_duration_s": 1.0,
+    "move_duration_s": 2.0,
+    "place_duration_s": 1.0,
+    "verify_duration_s": 0.1,
+    "max_steps": 32,
+    "destination_aliases": {
+      "zone1": "zone_1",
+      "zone2": "zone_2"
+    },
+    "routes": {
+      "red_ball": {
+        "zone_1": "to_zone_1",
+        "zone_2": "to_zone_2"
+      },
+      "blue_ball": {
+        "zone_2": "blue_to_zone_2"
+      }
+    }
+  }
+}

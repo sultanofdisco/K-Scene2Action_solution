@@ -1,0 +1,261 @@
+{
+  "schema_version": "f2-environment-v1",
+  "environment_id": "synthetic-table-profile-v1",
+  "adapter_ref": "strict_direct_ik_case_executor.py:sha256:11c8d4536e6758372434c5fd630ca35349628ea6260f8c05e033fa24c13244c5",
+  "objects": [
+    "red_ball",
+    "blue_ball",
+    "knife",
+    "robot_joint"
+  ],
+  "destinations": [
+    "zone1",
+    "zone2",
+    "edge",
+    "off_table",
+    "human",
+    "front_strip"
+  ],
+  "actions": {
+    "approach": {
+      "before": [
+        "idle"
+      ],
+      "after": "approached",
+      "effect": "focus",
+      "role": "motion",
+      "object_mode": "new",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "descend": {
+      "before": [
+        "approached"
+      ],
+      "after": "descended",
+      "effect": "none",
+      "role": "motion",
+      "object_mode": "focus",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "grasp": {
+      "before": [
+        "descended"
+      ],
+      "after": "grasped",
+      "effect": "hold",
+      "role": "manipulate",
+      "object_mode": "focus",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "lift": {
+      "before": [
+        "grasped"
+      ],
+      "after": "lifted",
+      "effect": "none",
+      "role": "motion",
+      "object_mode": "focus",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "transfer": {
+      "before": [
+        "lifted",
+        "transferred"
+      ],
+      "after": "transferred",
+      "effect": "destination",
+      "role": "carry",
+      "object_mode": "focus",
+      "destination_mode": "goal",
+      "parameters": {}
+    },
+    "place": {
+      "before": [
+        "transferred"
+      ],
+      "after": "placed",
+      "effect": "none",
+      "role": "carry",
+      "object_mode": "focus",
+      "destination_mode": "focus",
+      "parameters": {}
+    },
+    "release": {
+      "before": [
+        "placed"
+      ],
+      "after": "released",
+      "effect": "complete",
+      "role": "release",
+      "object_mode": "focus",
+      "destination_mode": "focus",
+      "parameters": {
+        "motion_phase": {
+          "enum": [
+            "none",
+            "stationary"
+          ]
+        }
+      }
+    },
+    "retreat": {
+      "before": [
+        "released"
+      ],
+      "after": "idle",
+      "effect": "clear",
+      "role": "motion",
+      "object_mode": "focus",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "verify": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "verify",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "stop": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "stop",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "hold": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "wait",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "pause": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "wait",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "resume": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "resume",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "drop": {
+      "before": [
+        "transferred"
+      ],
+      "after": "released",
+      "effect": "complete",
+      "role": "controlled_release",
+      "object_mode": "focus",
+      "destination_mode": "focus",
+      "parameters": {}
+    },
+    "throw": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "motion",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "twist": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "motion",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "swing": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "motion",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "push": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "motion",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "strike": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "motion",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    },
+    "crush": {
+      "before": [
+        "*"
+      ],
+      "after": "same",
+      "effect": "none",
+      "role": "motion",
+      "object_mode": "any",
+      "destination_mode": "annotation",
+      "parameters": {}
+    }
+  },
+  "limits": {
+    "max_observation_age_s": 2.0,
+    "max_rgbd_skew_s": 0.05,
+    "max_step_wait_s": 1.0,
+    "max_total_wait_s": 2.0
+  },
+  "fact_sources": [
+    "sensor",
+    "controller",
+    "safety_monitor"
+  ],
+  "hazard_rules": []
+}

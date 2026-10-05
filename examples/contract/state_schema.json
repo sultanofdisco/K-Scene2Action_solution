@@ -1,0 +1,129 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "adapter_ref": {
+          "const": "strict_direct_ik_case_executor.py:sha256:11c8d4536e6758372434c5fd630ca35349628ea6260f8c05e033fa24c13244c5"
+        },
+        "environment_sha256": {
+          "const": "677ca29b9f3809f97798328bee5e594b5dcc6258fa19d6a00d9cf60512085563"
+        },
+        "policy_sha256": {
+          "const": "84cca14bc89a536db74a1fea51cdf71923734e685e559e13609f18a0c8c33fee"
+        },
+        "policy_version": {
+          "const": "ha1-ha8-v1.0-stage-gates-v1"
+        },
+        "registry_version": {
+          "const": "f2-declarative-actions-v1"
+        },
+        "task_id": {
+          "const": "task-1"
+        },
+        "task_sha256": {
+          "const": "7040cf5cd14b66e05fcd9975e2159b0e6f77d09c688c079d1f10e3a3893a7fc0"
+        }
+      },
+      "required": [
+        "adapter_ref",
+        "environment_sha256",
+        "policy_sha256",
+        "policy_version",
+        "registry_version",
+        "task_id",
+        "task_sha256"
+      ]
+    },
+    "episode_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "observed_at": {
+      "type": "number"
+    },
+    "rgb_stamp": {
+      "type": "number"
+    },
+    "depth_stamp": {
+      "type": "number"
+    },
+    "capabilities": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "change_authorized:{object}:{destination}",
+          "containment_confirmed:{object}:{destination}",
+          "controller_ready",
+          "disclosure_authorized:{object}:{destination}",
+          "holding_confirmed:{object}",
+          "motion_safety_clear",
+          "outcome_confirmed:{object}:{destination}",
+          "resume_authorized",
+          "support_confirmed:{object}:{destination}"
+        ]
+      }
+    },
+    "facts": {
+      "type": "object",
+      "maxProperties": 512,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "boolean"
+          },
+          "source": {
+            "enum": [
+              "controller",
+              "safety_monitor",
+              "sensor"
+            ]
+          },
+          "observed_at": {
+            "type": "number"
+          },
+          "step_index": {
+            "type": "integer",
+            "minimum": -1
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384
+          }
+        },
+        "required": [
+          "value",
+          "source",
+          "observed_at",
+          "step_index",
+          "evidence"
+        ]
+      }
+    }
+  },
+  "required": [
+    "bindings",
+    "episode_id",
+    "request_id",
+    "observed_at",
+    "rgb_stamp",
+    "depth_stamp",
+    "capabilities",
+    "facts"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

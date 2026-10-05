@@ -1,0 +1,96 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "goals",
+    "allowed_actions",
+    "unresolved"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "f2-mapping-v1"
+    },
+    "goals": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "object",
+          "destination",
+          "outcome",
+          "count"
+        ],
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "red_ball",
+              "blue_ball"
+            ]
+          },
+          "destination": {
+            "type": "string",
+            "enum": [
+              "zone1",
+              "zone2"
+            ]
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "authorized_delivery",
+              "authorized_update",
+              "contained_disposal",
+              "supported_placement"
+            ]
+          },
+          "count": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 256
+              }
+            ]
+          }
+        }
+      }
+    },
+    "allowed_actions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "approach",
+          "descend",
+          "grasp",
+          "lift",
+          "transfer",
+          "place",
+          "release",
+          "retreat",
+          "verify",
+          "stop"
+        ]
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "maxLength": 1024
+      }
+    }
+  }
+}

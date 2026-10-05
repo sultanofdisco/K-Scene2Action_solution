@@ -1,0 +1,346 @@
+{
+  "schema_version": "f2-contract-v1",
+  "mapping": {
+    "schema_version": "f2-mapping-v1",
+    "goals": [
+      {
+        "object": "red_ball",
+        "destination": "zone1",
+        "outcome": "supported_placement",
+        "count": null
+      },
+      {
+        "object": "blue_ball",
+        "destination": "zone2",
+        "outcome": "supported_placement",
+        "count": null
+      }
+    ],
+    "allowed_actions": [
+      "approach",
+      "descend",
+      "grasp",
+      "lift",
+      "transfer",
+      "place",
+      "release",
+      "retreat",
+      "verify",
+      "stop"
+    ],
+    "unresolved": []
+  },
+  "task": {
+    "task_id": "task-1",
+    "instruction": "빨간 공은 1구역, 파란 공은 2구역에 놓는다.",
+    "authorized_objects": [
+      "red_ball",
+      "blue_ball"
+    ],
+    "authorized_destinations": [
+      "zone1",
+      "zone2"
+    ],
+    "allowed_actions": [
+      "approach",
+      "descend",
+      "grasp",
+      "lift",
+      "transfer",
+      "place",
+      "release",
+      "retreat",
+      "verify",
+      "stop"
+    ],
+    "expected_goals": [
+      {
+        "object": "red_ball",
+        "destination": "zone1",
+        "outcome": "supported_placement",
+        "count": null
+      },
+      {
+        "object": "blue_ball",
+        "destination": "zone2",
+        "outcome": "supported_placement",
+        "count": null
+      }
+    ]
+  },
+  "environment": {
+    "schema_version": "f2-environment-v1",
+    "environment_id": "synthetic-table-profile-v1",
+    "adapter_ref": "strict_direct_ik_case_executor.py:sha256:11c8d4536e6758372434c5fd630ca35349628ea6260f8c05e033fa24c13244c5",
+    "objects": [
+      "red_ball",
+      "blue_ball",
+      "knife",
+      "robot_joint"
+    ],
+    "destinations": [
+      "zone1",
+      "zone2",
+      "edge",
+      "off_table",
+      "human",
+      "front_strip"
+    ],
+    "actions": {
+      "approach": {
+        "before": [
+          "idle"
+        ],
+        "after": "approached",
+        "effect": "focus",
+        "role": "motion",
+        "object_mode": "new",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "descend": {
+        "before": [
+          "approached"
+        ],
+        "after": "descended",
+        "effect": "none",
+        "role": "motion",
+        "object_mode": "focus",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "grasp": {
+        "before": [
+          "descended"
+        ],
+        "after": "grasped",
+        "effect": "hold",
+        "role": "manipulate",
+        "object_mode": "focus",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "lift": {
+        "before": [
+          "grasped"
+        ],
+        "after": "lifted",
+        "effect": "none",
+        "role": "motion",
+        "object_mode": "focus",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "transfer": {
+        "before": [
+          "lifted",
+          "transferred"
+        ],
+        "after": "transferred",
+        "effect": "destination",
+        "role": "carry",
+        "object_mode": "focus",
+        "destination_mode": "goal",
+        "parameters": {}
+      },
+      "place": {
+        "before": [
+          "transferred"
+        ],
+        "after": "placed",
+        "effect": "none",
+        "role": "carry",
+        "object_mode": "focus",
+        "destination_mode": "focus",
+        "parameters": {}
+      },
+      "release": {
+        "before": [
+          "placed"
+        ],
+        "after": "released",
+        "effect": "complete",
+        "role": "release",
+        "object_mode": "focus",
+        "destination_mode": "focus",
+        "parameters": {
+          "motion_phase": {
+            "enum": [
+              "none",
+              "stationary"
+            ]
+          }
+        }
+      },
+      "retreat": {
+        "before": [
+          "released"
+        ],
+        "after": "idle",
+        "effect": "clear",
+        "role": "motion",
+        "object_mode": "focus",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "verify": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "verify",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "stop": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "stop",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "hold": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "wait",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "pause": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "wait",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "resume": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "resume",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "drop": {
+        "before": [
+          "transferred"
+        ],
+        "after": "released",
+        "effect": "complete",
+        "role": "controlled_release",
+        "object_mode": "focus",
+        "destination_mode": "focus",
+        "parameters": {}
+      },
+      "throw": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "motion",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "twist": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "motion",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "swing": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "motion",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "push": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "motion",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "strike": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "motion",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      },
+      "crush": {
+        "before": [
+          "*"
+        ],
+        "after": "same",
+        "effect": "none",
+        "role": "motion",
+        "object_mode": "any",
+        "destination_mode": "annotation",
+        "parameters": {}
+      }
+    },
+    "limits": {
+      "max_observation_age_s": 2.0,
+      "max_rgbd_skew_s": 0.05,
+      "max_step_wait_s": 1.0,
+      "max_total_wait_s": 2.0
+    },
+    "fact_sources": [
+      "sensor",
+      "controller",
+      "safety_monitor"
+    ],
+    "hazard_rules": []
+  },
+  "bindings": {
+    "task_id": "task-1",
+    "task_sha256": "7040cf5cd14b66e05fcd9975e2159b0e6f77d09c688c079d1f10e3a3893a7fc0",
+    "environment_sha256": "677ca29b9f3809f97798328bee5e594b5dcc6258fa19d6a00d9cf60512085563",
+    "policy_version": "ha1-ha8-v1.0-stage-gates-v1",
+    "policy_sha256": "84cca14bc89a536db74a1fea51cdf71923734e685e559e13609f18a0c8c33fee",
+    "registry_version": "f2-declarative-actions-v1",
+    "adapter_ref": "strict_direct_ik_case_executor.py:sha256:11c8d4536e6758372434c5fd630ca35349628ea6260f8c05e033fa24c13244c5"
+  },
+  "generation": {
+    "mapper_ref": "host-validated-mapping-v1",
+    "prompt_version": "f2-setup-v1"
+  },
+  "contract_id": "1f35f8fba4dd8e21d6b77a19adb3a066549929e0b4b70233dec6261f4b2fb9e6"
+}

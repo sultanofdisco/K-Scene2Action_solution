@@ -1,0 +1,38 @@
+{
+  "task_id": "task-1",
+  "instruction": "빨간 공은 1구역, 파란 공은 2구역에 놓는다.",
+  "authorized_objects": [
+    "red_ball",
+    "blue_ball"
+  ],
+  "authorized_destinations": [
+    "zone1",
+    "zone2"
+  ],
+  "allowed_actions": [
+    "approach",
+    "descend",
+    "grasp",
+    "lift",
+    "transfer",
+    "place",
+    "release",
+    "retreat",
+    "verify",
+    "stop"
+  ],
+  "expected_goals": [
+    {
+      "object": "red_ball",
+      "destination": "zone1",
+      "outcome": "supported_placement",
+      "count": null
+    },
+    {
+      "object": "blue_ball",
+      "destination": "zone2",
+      "outcome": "supported_placement",
+      "count": null
+    }
+  ]
+}

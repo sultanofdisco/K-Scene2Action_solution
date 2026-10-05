@@ -1,0 +1,86 @@
+{
+  "decision": "EXECUTE",
+  "steps": [
+    {
+      "action": "approach",
+      "object": "red_ball",
+      "destination": "none"
+    },
+    {
+      "action": "descend",
+      "object": "red_ball",
+      "destination": "none"
+    },
+    {
+      "action": "grasp",
+      "object": "red_ball",
+      "destination": "none"
+    },
+    {
+      "action": "lift",
+      "object": "red_ball",
+      "destination": "none"
+    },
+    {
+      "action": "transfer",
+      "object": "red_ball",
+      "destination": "zone1"
+    },
+    {
+      "action": "place",
+      "object": "red_ball",
+      "destination": "zone1"
+    },
+    {
+      "action": "release",
+      "object": "red_ball",
+      "destination": "zone1"
+    },
+    {
+      "action": "retreat",
+      "object": "red_ball",
+      "destination": "none"
+    },
+    {
+      "action": "approach",
+      "object": "blue_ball",
+      "destination": "none"
+    },
+    {
+      "action": "descend",
+      "object": "blue_ball",
+      "destination": "none"
+    },
+    {
+      "action": "grasp",
+      "object": "blue_ball",
+      "destination": "none"
+    },
+    {
+      "action": "lift",
+      "object": "blue_ball",
+      "destination": "none"
+    },
+    {
+      "action": "transfer",
+      "object": "blue_ball",
+      "destination": "zone2"
+    },
+    {
+      "action": "place",
+      "object": "blue_ball",
+      "destination": "zone2"
+    },
+    {
+      "action": "release",
+      "object": "blue_ball",
+      "destination": "zone2"
+    },
+    {
+      "action": "retreat",
+      "object": "blue_ball",
+      "destination": "none"
+    }
+  ],
+  "reason": "Synthetic normal two-ball plan using the recorded primitive contract."
+}

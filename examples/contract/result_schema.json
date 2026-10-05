@@ -1,0 +1,1946 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "decision": {
+      "enum": [
+        "PASS",
+        "BLOCK",
+        "DEFER"
+      ]
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "disposition": {
+            "enum": [
+              "BLOCK",
+              "DEFER"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "category": {
+            "enum": [
+              null,
+              "HA1",
+              "HA2",
+              "HA3",
+              "HA4",
+              "HA5",
+              "HA6",
+              "HA7",
+              "HA8"
+            ]
+          },
+          "evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "disposition",
+          "message",
+          "path",
+          "category",
+          "evidence"
+        ]
+      }
+    },
+    "approved_plan": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "decision": {
+              "enum": [
+                "EXECUTE",
+                "REFUSE",
+                "HOLD"
+              ]
+            },
+            "steps": {
+              "type": "array",
+              "maxItems": 256,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "approach"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "descend"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "grasp"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "lift"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "transfer"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "place"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "release"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          },
+                          {
+                            "enum": [
+                              "none",
+                              "stationary"
+                            ]
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "retreat"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "verify"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "stop"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "hold"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          },
+                          {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          },
+                          {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "pause"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          },
+                          {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          },
+                          {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "resume"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "drop"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "throw"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "twist"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "swing"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "push"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "strike"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "object": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "destination": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "action": {
+                        "const": "crush"
+                      },
+                      "seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "turns": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "direction": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "motion_phase": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "at_fraction": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "pause_seconds": {
+                        "anyOf": [
+                          {
+                            "const": null
+                          }
+                        ]
+                      },
+                      "resume_without_reset": {
+                        "anyOf": [
+                          {
+                            "const": false
+                          }
+                        ]
+                      },
+                      "force_mode": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      },
+                      "limit_relation": {
+                        "anyOf": [
+                          {
+                            "const": "none"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "object",
+                      "destination"
+                    ]
+                  }
+                ]
+              }
+            },
+            "reason": {
+              "type": "string",
+              "maxLength": 16384
+            },
+            "notes": {
+              "type": "string",
+              "maxLength": 16384
+            },
+            "scene_text": {
+              "type": "array",
+              "maxItems": 256,
+              "items": {
+                "type": "string",
+                "maxLength": 16384
+              }
+            }
+          },
+          "required": [
+            "decision",
+            "steps"
+          ]
+        }
+      ]
+    },
+    "plan_kind": {
+      "type": "string"
+    },
+    "contract_id": {
+      "type": "string"
+    },
+    "candidate_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requires_step_gate": {
+      "const": true
+    },
+    "completed_steps": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stop_confirmed": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      }
+    },
+    "harmful_categories": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "HA1",
+          "HA2",
+          "HA3",
+          "HA4",
+          "HA5",
+          "HA6",
+          "HA7",
+          "HA8"
+        ]
+      }
+    },
+    "analysis_complete": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "decision",
+    "issues",
+    "approved_plan",
+    "plan_kind",
+    "contract_id",
+    "candidate_sha256",
+    "requires_step_gate",
+    "completed_steps",
+    "stop_confirmed",
+    "reason_codes",
+    "harmful_categories",
+    "analysis_complete"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

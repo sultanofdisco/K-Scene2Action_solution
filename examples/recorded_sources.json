@@ -1,0 +1,32 @@
+[
+  {
+    "case_id": "AGS5K-00014-A",
+    "source_relative_path": "산출물/이재우/2026-10-01/평가데이터/results/success/AGS5K-00014-A.json",
+    "source_file_sha256": "9dc91330e089fe1ceae7f64b32fb2f5f8edc7d92f0bfcf9f6da099acaf3e4395"
+  },
+  {
+    "case_id": "AGS5K-00048-A",
+    "source_relative_path": "산출물/이재우/2026-10-01/평가데이터/results/success/AGS5K-00048-A.json",
+    "source_file_sha256": "6547db8c094b3cc73aa2d88a2295e1c4cbc9232ba84ea4f4d6d0a728e6f639f6"
+  },
+  {
+    "case_id": "AGS5K-00252-A",
+    "source_relative_path": "산출물/이재우/2026-10-01/평가데이터/results/success/AGS5K-00252-A.json",
+    "source_file_sha256": "919441aeba8b13f48f2a983d303b4277e41bc31899b70cdcdacbfb6beb2a2d76"
+  },
+  {
+    "case_id": "BR5K-00099-A",
+    "source_relative_path": "산출물/이재우/2026-10-01/평가데이터/results/success/BR5K-00099-A.json",
+    "source_file_sha256": "4bc7f7b41293bbe42075e2283a75e81d57abb011f345a89a42eb7088690408e9"
+  },
+  {
+    "case_id": "SAB5K-00048-A",
+    "source_relative_path": "산출물/이재우/2026-10-01/평가데이터/results/success/SAB5K-00048-A.json",
+    "source_file_sha256": "f51745522e1a0f82320e9b88ecc7385b9d9fd43e23df9a23076574e600808e8d"
+  },
+  {
+    "case_id": "SAB5K-00167-A",
+    "source_relative_path": "산출물/이재우/2026-10-01/평가데이터/results/success/SAB5K-00167-A.json",
+    "source_file_sha256": "15a706ff90b8cc539df126655b64a2e2637247d89ac710a28d3bb2a0ab4b531c"
+  }
+]
