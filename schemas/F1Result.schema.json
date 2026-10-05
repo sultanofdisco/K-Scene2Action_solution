@@ -1,0 +1,187 @@
+{
+  "$defs": {
+    "ApprovedInput": {
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Command",
+          "type": "string"
+        },
+        "command_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Command Sha256",
+          "type": "string"
+        },
+        "source_image_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Image Sha256",
+          "type": "string"
+        },
+        "image": {
+          "$ref": "#/$defs/ImageRef"
+        },
+        "environment_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Environment Version",
+          "type": "string"
+        },
+        "context_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Context Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "command",
+        "command_sha256",
+        "source_image_sha256",
+        "image",
+        "environment_version",
+        "context_id"
+      ],
+      "title": "ApprovedInput",
+      "type": "object"
+    },
+    "Decision": {
+      "enum": [
+        "PASS",
+        "BLOCK",
+        "DEFER"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "ImageRef": {
+      "additionalProperties": false,
+      "description": "Opaque asset reference; SHA-256 covers encoded file bytes, not pixels.",
+      "properties": {
+        "asset_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "asset_id",
+        "sha256",
+        "width",
+        "height"
+      ],
+      "title": "ImageRef",
+      "type": "object"
+    },
+    "ReasonCode": {
+      "enum": [
+        "INPUT_CLEAR",
+        "NO_TEXT_DETECTED",
+        "INVALID_REQUEST",
+        "IMAGE_UNAVAILABLE",
+        "IMAGE_DECODE_ERROR",
+        "IMAGE_MISMATCH",
+        "INPUT_BINDING_MISMATCH",
+        "UNSUPPORTED_MODE",
+        "CONTEXT_MISSING",
+        "CONTEXT_INCOMPLETE",
+        "CONTEXT_MISMATCH",
+        "CONTEXT_REJECTED",
+        "F1T_HARMFUL_REQUEST",
+        "F1T_TEXT_TOO_LONG",
+        "F1T_UNCERTAIN",
+        "F1T_MODEL_NOT_READY",
+        "F1T_ERROR",
+        "OCR_UNREADABLE",
+        "OCR_BUDGET_EXCEEDED",
+        "OCR_ERROR",
+        "F1O_HARMFUL_INSTRUCTION",
+        "F1O_TASK_OVERRIDE",
+        "F1O_AUTHORITY_SPOOFING",
+        "F1O_UNCERTAIN",
+        "F1O_INPUT_TOO_LONG",
+        "F1O_INVALID_OUTPUT",
+        "F1O_ERROR",
+        "REQUIRED_CHECK_MISSING"
+      ],
+      "title": "ReasonCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "pattern": "\\S",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Request Id"
+    },
+    "decision": {
+      "$ref": "#/$defs/Decision"
+    },
+    "reason_codes": {
+      "items": {
+        "$ref": "#/$defs/ReasonCode"
+      },
+      "minItems": 1,
+      "title": "Reason Codes",
+      "type": "array"
+    },
+    "approved_input": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ApprovedInput"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "trace_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Trace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request_id",
+    "decision",
+    "reason_codes",
+    "approved_input",
+    "trace_id"
+  ],
+  "title": "F1Result",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,116 @@
+{
+  "$defs": {
+    "ContextStatus": {
+      "enum": [
+        "READY",
+        "REJECTED",
+        "INCOMPLETE"
+      ],
+      "title": "ContextStatus",
+      "type": "string"
+    },
+    "Target": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Description",
+          "type": "string"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        }
+      },
+      "required": [
+        "description"
+      ],
+      "title": "Target",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "context_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Context Id",
+      "type": "string"
+    },
+    "command_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Command Sha256",
+      "type": "string"
+    },
+    "environment_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Environment Version",
+      "type": "string"
+    },
+    "context_status": {
+      "$ref": "#/$defs/ContextStatus"
+    },
+    "target": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Target"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "explicit_goal": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "pattern": "\\S",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Explicit Goal"
+    },
+    "constraints": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Constraints",
+      "type": "array"
+    }
+  },
+  "required": [
+    "context_id",
+    "command_sha256",
+    "environment_version",
+    "context_status"
+  ],
+  "title": "TaskContext",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

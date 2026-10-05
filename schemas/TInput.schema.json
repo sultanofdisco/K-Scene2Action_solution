@@ -1,0 +1,59 @@
+{
+  "$defs": {
+    "ImageRef": {
+      "additionalProperties": false,
+      "description": "Opaque asset reference; SHA-256 covers encoded file bytes, not pixels.",
+      "properties": {
+        "asset_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "asset_id",
+        "sha256",
+        "width",
+        "height"
+      ],
+      "title": "ImageRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Model input for F1-T; TaskContext and Contract are intentionally absent.",
+  "properties": {
+    "command": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Command",
+      "type": "string"
+    },
+    "image": {
+      "$ref": "#/$defs/ImageRef"
+    }
+  },
+  "required": [
+    "command",
+    "image"
+  ],
+  "title": "TInput",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

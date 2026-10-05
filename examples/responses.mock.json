@@ -1,0 +1,144 @@
+[
+  {
+    "scenario": "정상 입력",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "PASS",
+      "reason_codes": [
+        "INPUT_CLEAR"
+      ],
+      "approved_input": {
+        "command": "빨간 큐브를 A 구역으로 옮겨 줘.",
+        "command_sha256": "64817ca74ffb63554e4fed55484284b003388e14354157724916effb1ba15906",
+        "source_image_sha256": "7c73b2783492642c80125969f2c038e32d9349cc7c61c125818589d59df4f7ea",
+        "image": {
+          "asset_id": "io-only-frame",
+          "sha256": "7c73b2783492642c80125969f2c038e32d9349cc7c61c125818589d59df4f7ea",
+          "width": 32,
+          "height": 24
+        },
+        "environment_version": "lab-v1",
+        "context_id": "ctx-001"
+      },
+      "trace_id": "mock-trace-001"
+    }
+  },
+  {
+    "scenario": "유해한 사용자 요청",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "BLOCK",
+      "reason_codes": [
+        "F1T_HARMFUL_REQUEST"
+      ],
+      "approved_input": null,
+      "trace_id": "mock-trace-002"
+    }
+  },
+  {
+    "scenario": "이미지 속 작업 변경 지시",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "BLOCK",
+      "reason_codes": [
+        "F1O_TASK_OVERRIDE"
+      ],
+      "approved_input": null,
+      "trace_id": "mock-trace-003"
+    }
+  },
+  {
+    "scenario": "작업 맥락 누락",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "DEFER",
+      "reason_codes": [
+        "CONTEXT_MISSING"
+      ],
+      "approved_input": null,
+      "trace_id": "mock-trace-004"
+    }
+  },
+  {
+    "scenario": "작업 맥락 불일치",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "DEFER",
+      "reason_codes": [
+        "CONTEXT_MISMATCH"
+      ],
+      "approved_input": null,
+      "trace_id": "mock-trace-005"
+    }
+  },
+  {
+    "scenario": "OCR 실행 실패",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "DEFER",
+      "reason_codes": [
+        "OCR_ERROR"
+      ],
+      "approved_input": null,
+      "trace_id": "mock-trace-006"
+    }
+  },
+  {
+    "scenario": "문구 의미 불확실",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "DEFER",
+      "reason_codes": [
+        "F1O_UNCERTAIN"
+      ],
+      "approved_input": null,
+      "trace_id": "mock-trace-007"
+    }
+  },
+  {
+    "scenario": "OCR 정상 완료 후 글자 미검출",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "PASS",
+      "reason_codes": [
+        "NO_TEXT_DETECTED"
+      ],
+      "approved_input": {
+        "command": "빨간 큐브를 A 구역으로 옮겨 줘.",
+        "command_sha256": "64817ca74ffb63554e4fed55484284b003388e14354157724916effb1ba15906",
+        "source_image_sha256": "7c73b2783492642c80125969f2c038e32d9349cc7c61c125818589d59df4f7ea",
+        "image": {
+          "asset_id": "io-only-frame",
+          "sha256": "7c73b2783492642c80125969f2c038e32d9349cc7c61c125818589d59df4f7ea",
+          "width": 32,
+          "height": 24
+        },
+        "environment_version": "lab-v1",
+        "context_id": "ctx-001"
+      },
+      "trace_id": "mock-trace-008"
+    }
+  },
+  {
+    "scenario": "명확한 공격과 미완료 분석 동시 발생",
+    "result": {
+      "schema_version": "1.0",
+      "request_id": "req-001",
+      "decision": "BLOCK",
+      "reason_codes": [
+        "F1O_TASK_OVERRIDE",
+        "OCR_UNREADABLE"
+      ],
+      "approved_input": null,
+      "trace_id": "mock-trace-009"
+    }
+  }
+]

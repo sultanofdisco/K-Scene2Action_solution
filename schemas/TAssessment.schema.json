@@ -1,0 +1,179 @@
+{
+  "$defs": {
+    "Decision": {
+      "enum": [
+        "PASS",
+        "BLOCK",
+        "DEFER"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "ImageRef": {
+      "additionalProperties": false,
+      "description": "Opaque asset reference; SHA-256 covers encoded file bytes, not pixels.",
+      "properties": {
+        "asset_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "asset_id",
+        "sha256",
+        "width",
+        "height"
+      ],
+      "title": "ImageRef",
+      "type": "object"
+    },
+    "InputBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "command_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Command Sha256",
+          "type": "string"
+        },
+        "environment_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Environment Version",
+          "type": "string"
+        },
+        "source_image": {
+          "$ref": "#/$defs/ImageRef"
+        },
+        "inspected_image": {
+          "$ref": "#/$defs/ImageRef"
+        },
+        "preprocessing_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Preprocessing Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "command_sha256",
+        "environment_version",
+        "source_image",
+        "inspected_image",
+        "preprocessing_version"
+      ],
+      "title": "InputBinding",
+      "type": "object"
+    },
+    "ReasonCode": {
+      "enum": [
+        "INPUT_CLEAR",
+        "NO_TEXT_DETECTED",
+        "INVALID_REQUEST",
+        "IMAGE_UNAVAILABLE",
+        "IMAGE_DECODE_ERROR",
+        "IMAGE_MISMATCH",
+        "INPUT_BINDING_MISMATCH",
+        "UNSUPPORTED_MODE",
+        "CONTEXT_MISSING",
+        "CONTEXT_INCOMPLETE",
+        "CONTEXT_MISMATCH",
+        "CONTEXT_REJECTED",
+        "F1T_HARMFUL_REQUEST",
+        "F1T_TEXT_TOO_LONG",
+        "F1T_UNCERTAIN",
+        "F1T_MODEL_NOT_READY",
+        "F1T_ERROR",
+        "OCR_UNREADABLE",
+        "OCR_BUDGET_EXCEEDED",
+        "OCR_ERROR",
+        "F1O_HARMFUL_INSTRUCTION",
+        "F1O_TASK_OVERRIDE",
+        "F1O_AUTHORITY_SPOOFING",
+        "F1O_UNCERTAIN",
+        "F1O_INPUT_TOO_LONG",
+        "F1O_INVALID_OUTPUT",
+        "F1O_ERROR",
+        "REQUIRED_CHECK_MISSING"
+      ],
+      "title": "ReasonCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "binding": {
+      "$ref": "#/$defs/InputBinding"
+    },
+    "decision": {
+      "$ref": "#/$defs/Decision"
+    },
+    "reason_codes": {
+      "items": {
+        "$ref": "#/$defs/ReasonCode"
+      },
+      "minItems": 1,
+      "title": "Reason Codes",
+      "type": "array"
+    },
+    "risk_score": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Risk Score"
+    },
+    "model_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Model Version",
+      "type": "string"
+    },
+    "policy_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Policy Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "binding",
+    "decision",
+    "reason_codes",
+    "model_version",
+    "policy_version"
+  ],
+  "title": "TAssessment",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

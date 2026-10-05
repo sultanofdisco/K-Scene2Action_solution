@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "k-scene2action-f1"
+version = "0.1.0"
+description = "F1 input and output interfaces for K-Scene2Action configuration C"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.10,<3"]
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/f1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

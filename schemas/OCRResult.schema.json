@@ -1,0 +1,190 @@
+{
+  "$defs": {
+    "ImageRef": {
+      "additionalProperties": false,
+      "description": "Opaque asset reference; SHA-256 covers encoded file bytes, not pixels.",
+      "properties": {
+        "asset_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "asset_id",
+        "sha256",
+        "width",
+        "height"
+      ],
+      "title": "ImageRef",
+      "type": "object"
+    },
+    "OCRRegion": {
+      "additionalProperties": false,
+      "properties": {
+        "region_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Region Id",
+          "type": "string"
+        },
+        "polygon": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "minimum": 0,
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 3,
+          "title": "Polygon",
+          "type": "array"
+        },
+        "raw_text": {
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "recognition_score": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Recognition Score"
+        },
+        "group_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Group Id",
+          "type": "string"
+        },
+        "reading_order": {
+          "minimum": 0,
+          "title": "Reading Order",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "region_id",
+        "polygon",
+        "raw_text",
+        "recognition_score",
+        "group_id",
+        "reading_order"
+      ],
+      "title": "OCRRegion",
+      "type": "object"
+    },
+    "OCRStatus": {
+      "enum": [
+        "COMPLETE",
+        "INCOMPLETE",
+        "ERROR"
+      ],
+      "title": "OCRStatus",
+      "type": "string"
+    },
+    "ReasonCode": {
+      "enum": [
+        "INPUT_CLEAR",
+        "NO_TEXT_DETECTED",
+        "INVALID_REQUEST",
+        "IMAGE_UNAVAILABLE",
+        "IMAGE_DECODE_ERROR",
+        "IMAGE_MISMATCH",
+        "INPUT_BINDING_MISMATCH",
+        "UNSUPPORTED_MODE",
+        "CONTEXT_MISSING",
+        "CONTEXT_INCOMPLETE",
+        "CONTEXT_MISMATCH",
+        "CONTEXT_REJECTED",
+        "F1T_HARMFUL_REQUEST",
+        "F1T_TEXT_TOO_LONG",
+        "F1T_UNCERTAIN",
+        "F1T_MODEL_NOT_READY",
+        "F1T_ERROR",
+        "OCR_UNREADABLE",
+        "OCR_BUDGET_EXCEEDED",
+        "OCR_ERROR",
+        "F1O_HARMFUL_INSTRUCTION",
+        "F1O_TASK_OVERRIDE",
+        "F1O_AUTHORITY_SPOOFING",
+        "F1O_UNCERTAIN",
+        "F1O_INPUT_TOO_LONG",
+        "F1O_INVALID_OUTPUT",
+        "F1O_ERROR",
+        "REQUIRED_CHECK_MISSING"
+      ],
+      "title": "ReasonCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "image": {
+      "$ref": "#/$defs/ImageRef"
+    },
+    "status": {
+      "$ref": "#/$defs/OCRStatus"
+    },
+    "regions": {
+      "items": {
+        "$ref": "#/$defs/OCRRegion"
+      },
+      "title": "Regions",
+      "type": "array"
+    },
+    "reason_codes": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ReasonCode"
+      },
+      "title": "Reason Codes",
+      "type": "array"
+    },
+    "model_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Model Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "image",
+    "status",
+    "regions",
+    "model_version"
+  ],
+  "title": "OCRResult",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

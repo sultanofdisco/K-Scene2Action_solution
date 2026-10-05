@@ -1,0 +1,84 @@
+{
+  "$defs": {
+    "ImageRef": {
+      "additionalProperties": false,
+      "description": "Opaque asset reference; SHA-256 covers encoded file bytes, not pixels.",
+      "properties": {
+        "asset_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "asset_id",
+        "sha256",
+        "width",
+        "height"
+      ],
+      "title": "ImageRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "command": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Command",
+      "type": "string"
+    },
+    "command_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Command Sha256",
+      "type": "string"
+    },
+    "source_image_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Image Sha256",
+      "type": "string"
+    },
+    "image": {
+      "$ref": "#/$defs/ImageRef"
+    },
+    "environment_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Environment Version",
+      "type": "string"
+    },
+    "context_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Context Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "command",
+    "command_sha256",
+    "source_image_sha256",
+    "image",
+    "environment_version",
+    "context_id"
+  ],
+  "title": "ApprovedInput",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

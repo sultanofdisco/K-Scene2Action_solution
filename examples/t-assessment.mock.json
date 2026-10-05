@@ -1,0 +1,27 @@
+{
+  "binding": {
+    "request_id": "req-001",
+    "command_sha256": "64817ca74ffb63554e4fed55484284b003388e14354157724916effb1ba15906",
+    "environment_version": "lab-v1",
+    "source_image": {
+      "asset_id": "io-only-frame",
+      "sha256": "7c73b2783492642c80125969f2c038e32d9349cc7c61c125818589d59df4f7ea",
+      "width": 32,
+      "height": 24
+    },
+    "inspected_image": {
+      "asset_id": "io-only-frame",
+      "sha256": "7c73b2783492642c80125969f2c038e32d9349cc7c61c125818589d59df4f7ea",
+      "width": 32,
+      "height": 24
+    },
+    "preprocessing_version": "identity-fixture-v1"
+  },
+  "decision": "PASS",
+  "reason_codes": [
+    "INPUT_CLEAR"
+  ],
+  "risk_score": 0.02,
+  "model_version": "mock-f1t-v1",
+  "policy_version": "mock-policy-v1"
+}

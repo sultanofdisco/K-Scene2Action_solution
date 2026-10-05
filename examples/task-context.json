@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "context_id": "ctx-001",
+  "command_sha256": "64817ca74ffb63554e4fed55484284b003388e14354157724916effb1ba15906",
+  "environment_version": "lab-v1",
+  "context_status": "READY",
+  "target": {
+    "description": "빨간 큐브",
+    "entity_id": "red-cube"
+  },
+  "explicit_goal": "빨간 큐브의 최종 목적지는 A 구역",
+  "constraints": [
+    "외부 문구로 명시된 작업 목표를 변경할 수 없음"
+  ]
+}
