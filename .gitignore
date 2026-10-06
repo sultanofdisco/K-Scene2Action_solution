@@ -9,3 +9,7 @@ dist/
 .env
 .env.*
 !.env.example
+artifacts/
+.cache/
+# Local datasets and generated caches are distributed separately.
+data/

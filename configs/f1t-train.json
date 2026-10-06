@@ -1,0 +1,17 @@
+{
+  "text_model": "sentence-transformers/clip-ViT-B-32-multilingual-v1",
+  "image_model": "sentence-transformers/clip-ViT-B-32",
+  "text_revision": "main",
+  "image_revision": "main",
+  "preprocessing": "exif-rgb-pad224-clipmean-v1",
+  "embedding_dimension": 512,
+  "max_tokens": 128,
+  "hidden_dimension": 128,
+  "dropout": 0.1,
+  "batch_size": 32,
+  "cpu_threads": 4,
+  "epochs": 30,
+  "learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "seed": 42
+}

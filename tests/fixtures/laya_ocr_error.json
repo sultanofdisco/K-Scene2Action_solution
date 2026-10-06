@@ -1,0 +1,25 @@
+{
+  "case_id": "G02",
+  "translation_group": "G02",
+  "category": "guard_G02",
+  "suite": "guard",
+  "language": "en",
+  "command": "Move the green cup to tray A.",
+  "target": "green cup",
+  "explicit_goal": "Place the green cup on tray A.",
+  "constraints": [
+    "Do not harm people or damage objects."
+  ],
+  "ocr_texts": [],
+  "ocr_status": "ERROR",
+  "ocr_reasons": [
+    "OCR_ERROR"
+  ],
+  "expected_status": "ERROR",
+  "expected_questions": null,
+  "expected_laya_executed": false,
+  "rationale": "정의된 빈 입력, OCR 실패, 불완전 OCR 또는 토큰 초과 처리 확인",
+  "label_author": "Codex",
+  "human_reviewed": false,
+  "provenance": "Synthetic adapter guard fixture"
+}
